@@ -490,7 +490,9 @@ expanding into: the abelian integrals $U_k=\int r^k/\sqrt S\,\dd r$; the element
 rational-log primitive $\mathcal{I}_{\rm poly}=\int\mathcal{A}^m r^3/S\,\dd r$; the
 genus-two polylogarithms $W_{3k}=\int(U_3\dd U_k-U_k\dd U_3)$ at infinity (as in
 Kerr); the third-kind horizon integral
-$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$ closed in $\theta$; and
+$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$, closed in $\theta$ by
+the same Fay construction as $L$ [Eq.~\eqref{eq:thirdkind-theta}] but centred at the
+horizon Weierstrass point $r=2m$ instead of infinity~\cite{Fay1973}; and
 the \emph{horizon dilogarithms} $\mathcal{D}_k=\int U_k/(r-2m)\,\dd r$. Because $r=2m$
 is a branch point of $S$, in $t=\sqrt{r-2m}$ one has $\dd r/(r-2m)=2\,\dd t/t$---a
 simple pole of residue two, a third-kind $\dd\log$ letter \emph{at the horizon}---with
@@ -517,8 +519,9 @@ the Weierstrass $\sigma,\zeta$ of $E$ (base at the Weierstrass point, involution
 $z\to-z$) the weight-one integrals close as third-kind elliptic integrals,
 $U_0=\rho[\ln\sigma(z-z_d)-\ln\sigma(z+z_d)]+Cz$, residue $\rho=1/\sqrt{Q_4(r_d)}$ and
 $C$ algebraic (derived, verified to $10^{-14}$); one further integration turns
-$\mathcal{G}_k$ into the elliptic dilogarithm $\int\ln\sigma\,\zeta\,\dd z$, with
-single-valued projection the tabulated Zagier series
+$\mathcal{G}_k$ into the elliptic
+dilogarithm~\cite{Bloch2000,BeilinsonLevin1994} $\int\ln\sigma\,\zeta\,\dd z$, with
+single-valued projection the tabulated Zagier series~\cite{Zagier1990}
 $D^E(z)=\sum_{n\ge0}D(q^n\zeta)-\sum_{n\ge1}D(q^n/\zeta)$. All coefficients
 are algebraic; the transcendence lives in $W_{jk},\mathcal{G}_k$, so the correction is
 reusable once $S$ and the $c_k^m$ are fixed.
@@ -731,8 +734,9 @@ quasi-constants live on scattering arcs ($E_{\rm eff}>1$) or on the $t$-branch.
 \subsection{Semi-analytic first-order adiabatic orbit shape}
 \label{sec:adiabatic}
 The transport equation~\eqref{eq:Kdyn} controls the quasi-constant; the
-\emph{orbit shape} $\varphi(r,A)$ itself admits a companion first-order form that
-is explicit up to a single higher transcendental. Writing the frozen integrand as
+\emph{orbit shape} $\varphi(r,A)$ itself admits a companion first-order adiabatic
+form~\cite{BornFock1928,BenderOrszag1999} that is explicit up to a single higher
+transcendental. Writing the frozen integrand as
 $F(r;E)=\dd\varphi/\dd r$ (Eq.~\eqref{eq:t-K} for the $t$-branch,
 Eq.~\eqref{eq:tau-sextic} for $\tau$) and linearizing $E_{\rm eff}=\Ehat/A$ in
 $A(\eta)=A_0(1+\varepsilon\eta+\dots)$, $\varepsilon=A'/A$, gives
@@ -750,7 +754,9 @@ $\tau$-branch (the extra $A^{-2}$ of the proper-time functional affects the
 \emph{timing}, not the shape, so Eq.~\eqref{eq:phi-adiab} is common to both
 branches).
 
-The energy derivative reduces to the same depth-one class as $\varphi_0$ itself.
+The energy derivative reduces to the same depth-one class as $\varphi_0$ itself, by
+the classical reduction of abelian differentials to first/second
+kind~\cite{BakerAbelian1897,GriffithsHarris1978}.
 Solving $\partial_E(F)=\dd_r[\mathcal{A}(r)/\mathcal{R}]
 +\sum_{k=0}^{4}c_k\,r^k/\mathcal{R}$ for a degree-six numerator $\mathcal{A}(r)$
 and constants $c_k$ ($\mathcal{R}$ the branch sextic radical, $\sqrt{R_6}$ or
@@ -815,7 +821,7 @@ structure~\eqref{eq:phi-adiab} and differ only in the branch curve and the clock
     \end{ruledtabular}
 \end{table*}
 
-\emph{The correction $\psi$.} By parts and the shuffle identity
+\emph{The correction $\psi$.} By parts and the shuffle identity~\cite{Chen1977}
 $\rho+\tilde\rho=\partial_E\varphi_0\,\eta$
 ($\rho=\int\partial_E\varphi_0\,\dd\eta$,
 $\tilde\rho=\int\eta\,\partial_E F\,\dd r$) is closed, and the antisymmetric
@@ -853,19 +859,22 @@ $R_\Delta/\Delta$ the third-kind $\ln\sigma$-quotients at $r_\pm$---no double co
 The full $t$-branch assembly reproduces the direct
 $-\Ehat\!\int\!\partial_E F\,t\,\dd r$ to $9\times10^{-13}$.
 The $W_{kj}$ are the genus-two hyperelliptic
-polylogarithms of $y^2=\mathcal{R}^2$, of \emph{weight two}: they do not reduce to a
-weight-one Kleinian $\zeta,\sigma$ form, since for genus two the Abel image of
-single points lies on the theta divisor $\Theta=W_{g-1}$ (where $\zeta,\wp$ are
-singular). The single third-kind piece---the clock's dipole at infinity, residue
-$\rho_0=M/(E^2-1)^{3/2}$---integrates to
+polylogarithms of $y^2=\mathcal{R}^2$, weight-two iterated
+integrals~\cite{Chen1977} in the (elliptic/higher-genus) polylogarithm class of
+Beilinson--Levin and Brown--Levin~\cite{BeilinsonLevin1994,BrownLevin2011}: they do
+not reduce to a weight-one Kleinian $\zeta,\sigma$
+form~\cite{BakerAbelian1897,BuchstaberEnolskii1997}, since for genus two the Abel
+image of single points lies on the theta divisor $\Theta=W_{g-1}$~\cite{MumfordTata}
+(where $\zeta,\wp$ are singular). The single third-kind piece---the clock's dipole at
+infinity, residue $\rho_0=M/(E^2-1)^{3/2}$---integrates to
 \begin{equation}
     L(u)=\log\frac{\theta[\delta](u-e_+)}{\theta[\delta](u-e_-)}
     \label{eq:thirdkind-theta}
 \end{equation}
-(Fay prime form, odd $\delta$, $e_\pm$ the Abel images of infinity; $L(u(r))$
-differentiated back reproduces the third-kind differential to $5\times10^{-8}$).
-Like $\mathrm{Li}_2$, the $W_{kj}$ are their own closed form (Kronecker--Eisenstein
-series); the weight-two content is genuine and irreducible, the coefficients
+(Fay prime form~\cite{Fay1973}, odd $\delta$, $e_\pm$ the Abel images of infinity;
+$L(u(r))$ differentiated back reproduces the third-kind differential to
+$5\times10^{-8}$). Like $\mathrm{Li}_2$, the $W_{kj}$ are their own closed form
+(Kronecker--Eisenstein series~\cite{BeilinsonLevin1994}); the weight-two content is genuine and irreducible, the coefficients
 algebraic.
 
 Table~\ref{tab:adiab-valid} compares the hybrid

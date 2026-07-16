@@ -490,7 +490,10 @@ the elementary rational-log primitive
 $\mathcal{I}_{\rm poly}=\int\mathcal{A}^m r^3/S\,\dd r$; the genus-two
 polylogarithms $W_{3k}=\int(U_3\dd U_k-U_k\dd U_3)$ \emph{at infinity} (as in Kerr);
 the third-kind horizon integral
-$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$ closed in $\theta$; and
+$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$, closed in $\theta$ by
+the same Fay construction as $L$ in Eq.~\eqref{eq:thirdkind-theta} but centred at the
+horizon Weierstrass point $r=2m$ rather than the two points at infinity
+\cite{Fay1973}; and
 the \emph{horizon dilogarithms} $\mathcal{D}_k=\int U_k/(r-2m)\,\dd r$. Since $r=2m$
 is a branch point of $S$, in the local uniformiser $t=\sqrt{r-2m}$ one has
 $\dd r/(r-2m)=2\,\dd t/t$: a \emph{simple} pole of residue two, i.e.\ a genuine
@@ -524,9 +527,10 @@ closed form as third-kind elliptic integrals,
 $U_0=\rho\,[\ln\sigma(z-z_d)-\ln\sigma(z+z_d)]+Cz$ with the residue
 $\rho=1/\sqrt{Q_4(r_d)}$ and $C$ both \emph{algebraic} (derived, not fitted; verified
 to $10^{-14}$ against direct quadrature), and one further integration against the
-horizon third-kind letter turns $\mathcal{G}_k$ into the elliptic dilogarithm
+horizon third-kind letter turns $\mathcal{G}_k$ into the elliptic
+dilogarithm~\cite{Bloch2000,BeilinsonLevin1994}
 $\int\ln\sigma\,\zeta\,\dd z$, whose single-valued projection is the tabulated
-Zagier series
+Zagier series~\cite{Zagier1990}
 $D^E(z)=\sum_{n\ge0}D(q^n\zeta)-\sum_{n\ge1}D(q^n/\zeta)$
 ($q=e^{2\pi i\tau}$, $D$ the Bloch--Wigner function). As in Kerr, every coefficient is
 algebraic (rational in $m,E,J$); the transcendence lives entirely in
@@ -745,8 +749,9 @@ quasi-constants live on scattering arcs ($E_{\rm eff}>1$) or on the $t$-branch.
 \subsection{Semi-analytic first-order adiabatic orbit shape}
 \label{sec:adiabatic}
 The transport equation~\eqref{eq:Kdyn} controls the quasi-constant; the
-\emph{orbit shape} $\varphi(r,A)$ itself admits a companion first-order form that
-is explicit up to a single higher transcendental. Writing the frozen integrand as
+\emph{orbit shape} $\varphi(r,A)$ itself admits a companion first-order adiabatic
+form~\cite{BornFock1928,BenderOrszag1999} that is explicit up to a single higher
+transcendental. Writing the frozen integrand as
 $F(r;E)=\dd\varphi/\dd r$ (Eq.~\eqref{eq:t-K} for the $t$-branch,
 Eq.~\eqref{eq:tau-sextic} for $\tau$) and linearizing $E_{\rm eff}=\Ehat/A$ in
 $A(\eta)=A_0(1+\varepsilon\eta+\dots)$, $\varepsilon=A'/A$, gives
@@ -765,7 +770,9 @@ $\tau$-branch (the extra $A^{-2}$ of the proper-time functional affects the
 branches).
 
 \paragraph{Closed piece.} The energy derivative reduces to the same depth-one
-class as $\varphi_0$ itself. Solving $\partial_E(F)=\dd_r[\mathcal{A}(r)/\mathcal{R}]
+class as $\varphi_0$ itself, by the classical reduction of abelian differentials to
+first/second kind~\cite{BakerAbelian1897,GriffithsHarris1978}. Solving
+$\partial_E(F)=\dd_r[\mathcal{A}(r)/\mathcal{R}]
 +\sum_{k=0}^{4}c_k\,r^k/\mathcal{R}$ for a degree-six numerator $\mathcal{A}(r)$
 and constants $c_k$ (here $\mathcal{R}$ is the branch sextic radical, $\sqrt{R_6}$
 or $\sqrt{S}$) yields
@@ -836,8 +843,8 @@ and differ \emph{only} in the branch curve and the clock.
 \end{table}
 
 \paragraph{The correction $\psi$: algebraic coefficients times genus-two
-polylogarithms.} By parts and the shuffle identity the symmetric combination
-$\rho+\tilde\rho=\partial_E\varphi_0\,\eta$
+polylogarithms.} By parts and the shuffle identity~\cite{Chen1977} the symmetric
+combination $\rho+\tilde\rho=\partial_E\varphi_0\,\eta$
 ($\rho=\int\partial_E\varphi_0\,\dd\eta$,
 $\tilde\rho=\int\eta\,\partial_E F\,\dd r$) is closed, and the antisymmetric
 remainder
@@ -880,22 +887,26 @@ $W_{kj}$-reorganization plus the horizon piece) reproduces the direct double int
 $-\Ehat\!\int\!\partial_E F\,t\,\dd r$ to $9\times10^{-13}$.
 
 The building blocks $W_{kj}$ are the genus-two hyperelliptic polylogarithms of
-$y^2=\mathcal{R}^2$: depth-two iterated integrals of \emph{weight two}. They do
-\emph{not} reduce to a weight-one Kleinian $\zeta,\sigma$ combination, because for
+$y^2=\mathcal{R}^2$: depth-two iterated integrals~\cite{Chen1977} of \emph{weight
+two}, in the class of the (elliptic and higher-genus) polylogarithms of
+Beilinson--Levin and Brown--Levin~\cite{BeilinsonLevin1994,BrownLevin2011}. They do
+\emph{not} reduce to a weight-one Kleinian $\zeta,\sigma$
+combination~\cite{BakerAbelian1897,BuchstaberEnolskii1997}, because for
 genus two the Abel image of single points lies on the theta divisor
-$\Theta=W_{g-1}$, where $\zeta,\wp$ are singular; the single-point second-kind
-integrals are instead Fay theta-derivatives at shifted (off-divisor) arguments. The
-one third-kind piece---the clock's dipole at infinity, residue
+$\Theta=W_{g-1}$~\cite{MumfordTata}, where $\zeta,\wp$ are singular; the single-point
+second-kind integrals are instead Fay theta-derivatives at shifted (off-divisor)
+arguments. The one third-kind piece---the clock's dipole at infinity, residue
 $\rho_0=M/(E^2-1)^{3/2}$---integrates to
 \begin{equation}
     L(u)=\log\frac{\theta[\delta](u-e_+)}{\theta[\delta](u-e_-)}
     \label{eq:thirdkind-theta}
 \end{equation}
-(Fay prime form, odd half-characteristic $\delta$, $e_\pm$ the Abel images of the
-two points at infinity; differentiating $L(u(r))$ back reproduces the third-kind
-differential to $5\times10^{-8}$). Like $\mathrm{Li}_2$, the $W_{kj}$ are their own
-closed form (a Kronecker--Eisenstein series): the weight-two content is genuine and
-irreducible, while all coefficients remain algebraic.
+(Fay prime form~\cite{Fay1973}, odd half-characteristic $\delta$, $e_\pm$ the Abel
+images of the two points at infinity; differentiating $L(u(r))$ back reproduces the
+third-kind differential to $5\times10^{-8}$). Like $\mathrm{Li}_2$, the $W_{kj}$ are
+their own closed form (a Kronecker--Eisenstein series~\cite{BeilinsonLevin1994}): the
+weight-two content is genuine and irreducible, while all coefficients remain
+algebraic.
 
 \paragraph{Numerical validation.} Table~\ref{tab:adiab-valid} compares the
 hybrid form~\eqref{eq:phi-adiab}--\eqref{eq:psi-irr} (closed
