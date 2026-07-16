@@ -461,7 +461,14 @@ to $10^{-15}$). The clock is now the \emph{advanced time}: from $v=t+r_*$,
     v=E\,U_3+r+2m\ln(r-2m),
     \label{eq:vaidya-clock}
 \end{equation}
-the tortoise term injecting a \emph{horizon logarithm}. The first-order correction
+the tortoise term injecting a \emph{horizon logarithm}. This is the advanced-time
+(native) branch; the \emph{proper-time} branch instead uses the second-kind clock
+$\dd\tau/\dd r=r^2(r-2m)/\sqrt S$, i.e.\ $\eta=U_3-2m\,U_2$, $b=(0,0,-2m,1,0)$ (no
+horizon log), and closes by the very same
+assembly~\eqref{eq:psi-split}---$\delta\varphi_\tau/\dot m=\tfrac12\sum_{k<j}Q_{kj}
+W_{kj}-\eta(\mathcal{A}^m/\sqrt S+\tfrac12\sum c_k^m U_k)+\sum_j b_j\mathcal{I}_j$ with
+$Q_{kj}=c_k^m b_j-c_j^m b_k$, all coefficients algebraic (verified to
+$10^{-14}$). The advanced-time first-order correction
 $\delta\varphi=\dot m\!\int\!\partial_m F\,v\,\dd r$ then integrates by parts into a
 fully explicit closed form (verified to $9\times10^{-14}$, coefficients given),
 \begin{equation}
@@ -489,11 +496,15 @@ with the named building blocks: the abelian integrals $U_k=\int r^k/\sqrt S\,\dd
 the elementary rational-log primitive
 $\mathcal{I}_{\rm poly}=\int\mathcal{A}^m r^3/S\,\dd r$; the genus-two
 polylogarithms $W_{3k}=\int(U_3\dd U_k-U_k\dd U_3)$ \emph{at infinity} (as in Kerr);
-the third-kind horizon integral
-$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$, closed in $\theta$ by
-the same Fay construction as $L$ in Eq.~\eqref{eq:thirdkind-theta} but centred at the
-horizon Weierstrass point $r=2m$ rather than the two points at infinity
-\cite{Fay1973}; and
+the \emph{second}-kind horizon integral
+$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$---since
+$\mathcal{A}^m(2m)\ne0$ its integrand behaves as $(r-2m)^{-3/2}$, a double pole with
+\emph{no} residue at the horizon Weierstrass point, closed by the Kleinian
+$\zeta$/quasi-periods~\cite{BuchstaberEnolskii1997,BakerAbelian1897}, not by Fay; the
+genuinely \emph{third}-kind object is the horizon letter $\dd r/(r-2m)$ (the tortoise
+log, a simple pole of residue two at that Weierstrass point), which closes as a Fay
+$\theta$-ratio~\cite{Fay1973} exactly as $L$ in Eq.~\eqref{eq:thirdkind-theta} but
+centred at $r=2m$ instead of infinity; and
 the \emph{horizon dilogarithms} $\mathcal{D}_k=\int U_k/(r-2m)\,\dd r$. Since $r=2m$
 is a branch point of $S$, in the local uniformiser $t=\sqrt{r-2m}$ one has
 $\dd r/(r-2m)=2\,\dd t/t$: a \emph{simple} pole of residue two, i.e.\ a genuine
@@ -1814,6 +1825,8 @@ matching the direct double integral to $4\times10^{-15}$.
             & \texttt{vaidya\_dMF\_reduction.py} & $10^{-15}$\\
         Vaidya clock $v$; assembled $\delta\varphi$~\eqref{eq:vaidya-full}
             & \texttt{vaidya\_fully\_explicit.py} & $2\times10^{-13}$\\
+        Vaidya $\tau$-branch assembly
+            & \texttt{vaidya\_tau\_assembly.py} & $10^{-14}$\\
         horizon dilogarithm $\mathcal{D}_k=U_k\ln-\mathcal{G}_k$
             & \texttt{vaidya\_horizon\_dilog.py} & $10^{-12}$\\
         separatrix elliptic form $U_0(\sigma,\zeta)$; $\tau$

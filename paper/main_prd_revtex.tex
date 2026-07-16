@@ -464,9 +464,13 @@ advanced time: from $v=t+r_*$,
     \;\Rightarrow\; v=E\,U_3+r+2m\ln(r-2m),
     \label{eq:vaidya-clock}
 \end{equation}
-the tortoise term injecting a horizon logarithm. The first-order correction
-integrates by parts into a fully explicit closed form (verified to
-$9\times10^{-14}$),
+the tortoise term injecting a horizon logarithm. This is the advanced-time (native)
+branch; the \emph{proper-time} branch uses the second-kind clock
+$\dd\tau/\dd r=r^2(r-2m)/\sqrt S$ ($\eta=U_3-2m U_2$, $b=(0,0,-2m,1,0)$, no horizon
+log) and closes by the same assembly~\eqref{eq:psi-split} with $Q_{kj}=c_k^m b_j-c_j^m
+b_k$, all coefficients algebraic (verified to $10^{-14}$). The advanced-time
+first-order correction integrates by parts into a fully explicit closed form (verified
+to $9\times10^{-14}$),
 \begin{equation}
     \frac{\delta\varphi}{\dot m}=A_m\,v-E\!\int\! A_m\frac{r^3}{\sqrt S}\dd r
     -\int\! A_m\frac{r}{r-2m}\dd r,\quad A_m\equiv\partial_m\varphi_0,
@@ -489,10 +493,14 @@ gives the \emph{fully assembled} closed form (verified to $2\times10^{-13}$)
 expanding into: the abelian integrals $U_k=\int r^k/\sqrt S\,\dd r$; the elementary
 rational-log primitive $\mathcal{I}_{\rm poly}=\int\mathcal{A}^m r^3/S\,\dd r$; the
 genus-two polylogarithms $W_{3k}=\int(U_3\dd U_k-U_k\dd U_3)$ at infinity (as in
-Kerr); the third-kind horizon integral
-$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$, closed in $\theta$ by
-the same Fay construction as $L$ [Eq.~\eqref{eq:thirdkind-theta}] but centred at the
-horizon Weierstrass point $r=2m$ instead of infinity~\cite{Fay1973}; and
+Kerr); the \emph{second}-kind horizon integral
+$\mathcal{L}_{2m}=\int\mathcal{A}^m r/[(r-2m)\sqrt S]\,\dd r$ (as
+$\mathcal{A}^m(2m)\ne0$ the integrand is $\sim(r-2m)^{-3/2}$: a double pole with no
+residue at the horizon Weierstrass point, closed by the Kleinian
+$\zeta$/quasi-periods~\cite{BuchstaberEnolskii1997,BakerAbelian1897}, not Fay); the
+genuinely third-kind object is the horizon letter $\dd r/(r-2m)$ (tortoise log, simple
+pole residue two), closing as a Fay $\theta$-ratio~\cite{Fay1973} as $L$
+[Eq.~\eqref{eq:thirdkind-theta}] but centred at $r=2m$; and
 the \emph{horizon dilogarithms} $\mathcal{D}_k=\int U_k/(r-2m)\,\dd r$. Because $r=2m$
 is a branch point of $S$, in $t=\sqrt{r-2m}$ one has $\dd r/(r-2m)=2\,\dd t/t$---a
 simple pole of residue two, a third-kind $\dd\log$ letter \emph{at the horizon}---with
@@ -1689,6 +1697,7 @@ assembled $\delta\varphi$, matching the direct integral to $4\times10^{-15}$.
         quasi-periods $\eta$; $L$ (Fay) & \texttt{kerr\_quasiperiods\_bel.sage} & $10^{-12}$; $5{\times}10^{-8}$\\
         Vaidya reduction $c_k^m$ & \texttt{vaidya\_dMF\_reduction.py} & $10^{-15}$\\
         Vaidya clock; $\delta\varphi$~\eqref{eq:vaidya-full} & \texttt{vaidya\_fully\_explicit.py} & $2{\times}10^{-13}$\\
+        Vaidya $\tau$-branch assembly & \texttt{vaidya\_tau\_assembly.py} & $10^{-14}$\\
         horizon dilog $\mathcal{D}_k$ & \texttt{vaidya\_horizon\_dilog.py} & $10^{-12}$\\
         separatrix $U_0(\sigma,\zeta)$; $\tau$ & \texttt{vaidya\_ell\_dilog\_match.py} & $10^{-14}$\\
         accr./evap.\ split & \texttt{vaidya\_asymmetry.py} & $10^{-15}$\\
