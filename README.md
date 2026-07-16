@@ -35,9 +35,13 @@ numerically verifies it, and every figure in the paper has a generating script.
 python3 -m pip install -r requirements.txt      # numpy scipy sympy matplotlib mpmath Pillow
 ```
 
-**SageMath** (with the `abelfunctions` library) is required **only** for the two
+**SageMath** (with the `abelfunctions` library) is required **only** for the four
 `.sage` scripts in `KerrScripts/` (genus-2 Riemann surface, quasi-periods,
-third-kind theta). Everything else runs on the pure-Python stack.
+third-kind theta, Abel map) — these belong to the stationary-Kerr machinery.
+**Everything else — all FLRW, Vaidya and Thakurta–Kerr analysis, every closed-form
+check, and all figures — runs on the pure-Python stack** (sympy for the algebra,
+`scipy.integrate.quad` for the abelian building blocks, `mpmath` for the elliptic
+$\sigma,\zeta$ on the separatrix). No Sage needed there.
 
 ---
 
