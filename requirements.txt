@@ -1,3 +1,14 @@
 numpy
+scipy
+sympy
 matplotlib
+mpmath
 Pillow
+
+# SageMath (with the abelfunctions library) is required ONLY for the two .sage
+# scripts that build the genus-2 Riemann surface, quasi-periods and third-kind
+# theta closures:
+#   KerrScripts/kerr_quasiperiods_bel.sage
+#   KerrScripts/kerr_thirdkind_theta_closed.sage
+# Everything else (all analysis, all closed-form checks, all figures) runs on the
+# pure-Python stack above.
