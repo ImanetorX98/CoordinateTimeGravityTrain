@@ -1,0 +1,26 @@
+{
+  "_about": "Values quoted in the paper, with the tolerance used by checks/check_numerics.py. 'where' points to the paper.",
+  "table_I_delta90": {
+    "where": "Table I, exact column (Delta = 90 deg)",
+    "tolerance": 6e-6,
+    "values": {"0.05": 0.50803, "0.10": 0.51662, "0.20": 0.53584, "0.30": 0.55851, "0.40": 0.58587}
+  },
+  "nnlo_max_rel_error": {
+    "where": "Sec. VI F: largest NNLO relative error over 10 <= Delta <= 170 deg",
+    "upper_bounds": {"0.05": 7e-5, "0.10": 6e-4, "0.20": 5e-3, "0.30": 2e-2}
+  },
+  "mu_c": {"where": "Eq. (70)", "value": 0.85595, "tolerance": 1e-5},
+  "mu_s": {"where": "Eq. (73)", "value": 0.76858, "tolerance": 1e-5},
+  "antipodal_mu_0p8": {
+    "where": "Sec. VII B: mu = 0.8, curved tunnel versus diameter",
+    "q_curved": 0.536, "t_curved": 13.886, "t_diameter": 14.230, "tolerance": 5e-4
+  },
+  "near_buchdahl_mu_0p888": {
+    "where": "Sec. VII B: fastest tunnel at mu = 0.888",
+    "q_delta90": 0.89, "q_delta180": 0.86, "tolerance": 6e-3
+  },
+  "proper_time_example": {
+    "where": "Sec. IV: Delta = 90 deg, mu = 0.3, proper-time versus coordinate-time optimum",
+    "q_tau": 0.527, "q_t": 0.559, "tolerance": 6e-4
+  }
+}

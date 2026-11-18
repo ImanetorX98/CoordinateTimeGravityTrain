@@ -1,111 +1,126 @@
-# Constrained-worldline brachistochrones in non-stationary spacetimes
+# The gravitational train in the interior Schwarzschild metric
 
-Source code and manuscript for the paper *Constrained-worldline brachistochrones in
-non-stationary spacetimes: Kodama rails, closed forms, and plunge inversion*
-(CQG/iopart and PRD/revtex versions in `paper/`).
+Companion code for
 
-The fastest constrained "rail" worldline between two events is extended from
-stationary to **non-stationary** spacetimes — FLRW, Vaidya, and Thakurta--Kerr —
-built on the stationary Kerr optical/genus-2 machinery. The repository is
-self-contained for these results: every closed form has a script that generates and
-numerically verifies it, and every figure in the paper has a generating script.
+> I. Rosignoli, *The Gravitational Train in the Interior Schwarzschild Metric: NLO and NNLO
+> Perturbative Expansions*, European Journal of Physics (2026).
 
-> Per repository policy, generated binaries (`*.png`, `*.pdf`, videos) are **not**
-> tracked. Figures are regenerated from the scripts below.
+A particle is released from rest at one point of the surface of a homogeneous star and slides
+without friction through a tunnel to another surface point. Which tunnel minimises the travel time?
+In general relativity the answer is a geodesic of an optical (Jacobi) metric, and the fastest tunnel
+follows a radial Snell law. This repository reproduces **every result of the paper** from scratch
+and contains the **computational exercise for students** described in Sec. VI F.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ImanetorX98/CoordinateTimeGravityTrain/blob/main/notebooks/gravity_train_exercise.ipynb)
 
 ---
 
-## Layout
+## Quick start
+
+```bash
+python3 -m pip install -r requirements.txt     # numpy, scipy, sympy, mpmath, matplotlib
+python3 run_all_checks.py                      # about 20 s
+```
+
+Expected final output:
+
+```
+check                                                result  passed  failed  time
+Appendix A: interior Schwarzschild metric            PASS         7       0    0s
+Secs. VI-VII: analytic results (SymPy)               PASS        41       0    7s
+Table I, Secs. IV, VI F, VII B: numerical results    PASS        21       0    3s
+ALL CHECKS PASSED
+```
+
+If Mathematica or the free Wolfram Engine is installed, `python3 run_all_checks.py --with-mathematica`
+also runs an independent implementation of the symbolic checks in Wolfram Language.
+
+To regenerate the two figures of the paper:
+
+```bash
+python3 figures/fig1_exact_vs_nnlo.py          # a few seconds
+python3 figures/fig2_high_compactness.py       # about 15 s
+```
+
+They are written to `figures/output/` (PDF and PNG).
+
+---
+
+## Where each result of the paper is checked
+
+| Result in the paper | Script | What is checked |
+|---|---|---|
+| Interior Schwarzschild metric, Eqs. (9)-(10), Appendix A | `checks/check_interior_metric.py` | Einstein's equations, TOV equation, matching at the surface, Buchdahl bound |
+| Expansions of A, B and n, Sec. VI A-B | `checks/check_derivations.py` | exact series in the compactness |
+| Snell integrand I0, I1, I2, Eqs. (47)-(49) | `checks/check_derivations.py` | exact series |
+| Closed-form integrals and Eq. (54), Sec. VI D | `checks/check_derivations.py` | derivatives of the primitives, end-point values |
+| q1, q2 and Eq. (59), Sec. VI E | `checks/check_derivations.py` | perturbative inversion; proof that q1, q2 > 0 |
+| Table I and the accuracy of NLO/NNLO, Sec. VI F | `checks/check_numerics.py` | exact Snell law versus the series, for 10° ≤ Δ ≤ 170° |
+| Earth example, Sec. VI G | `checks/check_derivations.py` | depth shift and travel time |
+| Proper-time versus coordinate-time optimum, Sec. IV | `checks/check_numerics.py` | q = 0.527 versus 0.559 (Δ = 90°, μ = 0.3) |
+| Buchdahl asymptotics, Sec. VII A | `checks/check_derivations.py` | A(0) and n(0) as μ → 8/9 |
+| Circular optical orbits, μ_c, Eq. (70) | `checks/check_derivations.py`, `checks/check_numerics.py` | exact cubic and its root |
+| Loss of minimality of the diameter, μ_s, Eqs. (71)-(73) | `checks/check_derivations.py`, `checks/check_numerics.py` | Jacobi equation, K(μ_s) = 0, faster curved tunnels at μ = 0.8 |
+| Fastest tunnels near the Buchdahl bound, Sec. VII B | `checks/check_numerics.py` | turning radii at μ = 0.888 |
+| Fig. 1 | `figures/fig1_exact_vs_nnlo.py` | |
+| Fig. 2 | `figures/fig2_high_compactness.py` | |
+
+The reference values and tolerances used by `check_numerics.py` are listed, with the place where
+they appear in the paper, in `expected_values.json`.
+
+---
+
+## Repository layout
 
 | Path | Contents |
-|------|----------|
-| `paper/` | LaTeX sources: `main.tex` (CQG/iopart), `main_prd_revtex.tex` (PRD), bibliographies, class/style files. |
-| `FLRWmetric/` | FLRW (degenerate base) analysis + figure scripts, incl. the perturbed-FLRW genus-jump proof of concept. |
-| `VaidyaMetric/` | Vaidya (dynamical black hole) analysis + figure scripts: explicit $\delta\varphi$, horizon dilogarithm, separatrix Bloch–Wigner, accretion/evaporation asymmetry. |
-| `ThakurtaMetric/` | Thakurta--Kerr (conformal rotating) analysis + figure scripts: adiabatic hybrid, breathing families, cusp, inversion. |
-| `KerrScripts/` | Stationary-Kerr machinery the paper builds on: genus-2 reduction, quasi-periods, third-kind theta, separatrices, penetration, colormaps, and the Kerr figure generators. Copied from the companion `KerrBrachistochrone` repo so this repo reproduces on its own. |
-| `reproduce_reductions.py` | One-file check of the algebraic heart (App. "Reproducing the reductions"). |
-| `paper_style.py` | Shared matplotlib style helper imported by the figure scripts. |
+|---|---|
+| `gravity_train.py` | Core physics shared by all scripts: metric functions, optical index, Snell integrals, travel times, perturbative formulas, the high-compactness analysis. Documented function by function. |
+| `run_all_checks.py` | Runs every check and prints a summary table. |
+| `checks/` | `check_interior_metric.py` and `check_derivations.py` (symbolic, SymPy), `check_numerics.py` (numerical), `verify_all.wl` (symbolic, Wolfram Language). |
+| `figures/` | Scripts for Figs. 1 and 2, and the shared plotting style. |
+| `notebooks/gravity_train_exercise.ipynb` | The computational exercise for students (supplementary material of the paper). |
+| `expected_values.json` | Values quoted in the paper, with tolerances. |
+
+Every script starts with a short header stating its **purpose**, the **part of the paper** it
+reproduces, its **inputs** (command-line options, all with defaults), its **outputs** and its
+**runtime**. Check scripts print one `PASS | ...` or `FAIL | ...` line per check and exit with
+status 0 only if everything passes, so they can be used in automated tests.
 
 ---
 
-## Install
+## The notebook for students
 
-```bash
-python3 -m pip install -r requirements.txt      # numpy scipy sympy matplotlib mpmath Pillow
-```
+`notebooks/gravity_train_exercise.ipynb` guides a student, in six parts, from the optical index to
+the exact relativistic tunnels: Newtonian limit, the two numerical difficulties of the problem and how
+to remove them, reproduction of Table I, comparison of Newtonian, NLO, NNLO and exact tunnels, and two
+open explorations (proper time; antipodal tunnels at high compactness). Each part ends with a check
+value and a conceptual question.
 
-**SageMath** (with the `abelfunctions` library) is required **only** for the four
-`.sage` scripts in `KerrScripts/` (genus-2 Riemann surface, quasi-periods,
-third-kind theta, Abel map) — these belong to the stationary-Kerr machinery.
-**Everything else — all FLRW, Vaidya and Thakurta–Kerr analysis, every closed-form
-check, and all figures — runs on the pure-Python stack** (sympy for the algebra,
-`scipy.integrate.quad` for the abelian building blocks, `mpmath` for the elliptic
-$\sigma,\zeta$ on the separatrix). No Sage needed there.
+* **In the browser, no installation:** click the *Open in Colab* badge above (a Google account is needed).
+* **Locally:** `python3 -m pip install jupyterlab numpy scipy matplotlib`, then
+  `jupyter lab notebooks/gravity_train_exercise.ipynb`.
 
----
-
-## How to use the scripts
-
-All scripts are **standalone** — run with `python3 <script>.py` (or `sage <script>.sage`).
-There are two kinds:
-
-- **Verification scripts** print numerical residuals to stdout (a closed form vs. its
-  direct integral); a residual near machine precision means the identity holds.
-- **Figure scripts** (`fig_*.py`, `genera_*.py`, `colormap_*.py`) compute and save a
-  figure (into `paper/Immagini/` or beside the script); they need `paper_style.py`
-  on the path (run them from the repo root, e.g. `python3 KerrScripts/fig_....py`).
-
-### Closed-form verification (reproduce the paper's results)
-
-| Command | What it does | Expected residual |
-|---------|--------------|-------------------|
-| `python3 reproduce_reductions.py` | Solves the 11×11 reduction identity; prints the reference coefficients $c_k$ (rational, exact) for the TK $\tau$/$t$ branches and Vaidya. | `0` exactly |
-| `python3 KerrScripts/pipeline_completa_deltaphi.py` | Full chain $(M,a,E,J)\to\delta\varphi$: solve → $c_k,b,Q_{kj}$ → building blocks $U_k,W_{kj},\mathcal I_j$ → assembled $\delta\varphi$ vs direct. | $4\times10^{-15}$ |
-| `python3 KerrScripts/kerr_tbranch_psi_assembly.py` | $t$-branch on-curve clock and full $\psi$ assembly. | $9\times10^{-13}$ |
-| `python3 KerrScripts/kerr_psi_explicit_verified.py` | TK $\tau$ reduction + $\psi=\tfrac12\hat E\sum Q_{kj}W_{kj}$. | $5\times10^{-14}$ |
-| `sage KerrScripts/kerr_quasiperiods_bel.sage` | Genus-2 quasi-periods $\eta$ (Legendre relation). | $10^{-12}$ |
-| `sage KerrScripts/kerr_thirdkind_theta_closed.sage` | Third-kind integral $L$ closed as a $\theta$-ratio (Fay). | $5\times10^{-8}$ |
-| `python3 VaidyaMetric/vaidya_fully_explicit.py` | Vaidya fully explicit $\delta\varphi$ (all building blocks). | $2\times10^{-13}$ |
-| `python3 VaidyaMetric/vaidya_horizon_dilog.py` | Horizon dilogarithm $\mathcal D_k=U_k\ln-\mathcal G_k$. | $10^{-12}$ |
-| `python3 VaidyaMetric/vaidya_ell_dilog_match.py` | Separatrix elliptic closed form in Weierstrass $\sigma,\zeta$; Bloch–Wigner. | $10^{-14}$ |
-| `python3 VaidyaMetric/vaidya_asymmetry.py` | Accretion/evaporation split $\mathcal A_\infty,\mathcal B_{\rm hor}$. | $10^{-15}$ |
-| `python3 FLRWmetric/flrw_perturbed_genus_jump.py` | Perturbed-FLRW proof of concept: genus 0→1→2 with the tidal multipole. | — |
-
-The paper appendix table *Result-to-script map* lists every closed form with its
-script and achieved residual.
-
-### Figures
-
-Each figure script writes the panels of one paper figure. The mapping is by name:
-`fig_<name>.py` (or a `genera_*`/`colormap_*` script) produces `Immagini/fig_<name>.*`.
-For example:
-
-```bash
-python3 FLRWmetric/genera_figure_flrw.py            # FLRW kinematics / variational panels
-python3 VaidyaMetric/genera_figure_vaidya.py        # Vaidya trajectories, timing, bounce
-python3 ThakurtaMetric/genera_figure_thakurta.py    # Thakurta-Kerr branches, breathing, cusp
-python3 KerrScripts/fig_penetrate_bounce_orbit.py   # ergosphere penetrate-and-bounce orbit
-python3 KerrScripts/kerr_penetration_threshold.py   # penetration phase diagram
-python3 KerrScripts/fig_atlas_tau_t.py              # t- and tau-branch atlases
-python3 KerrScripts/colormap_conforme_estremi_fissi.py  # fixed-endpoint conformal colormap
-```
-
-### Compile the paper
-
-Regenerate the figures into `paper/Immagini/`, then:
-
-```bash
-cd paper
-pdflatex main.tex && pdflatex main.tex                    # CQG version
-pdflatex main_prd_revtex.tex && pdflatex main_prd_revtex.tex   # PRD version
-```
+The notebook is self-contained: it does not import `gravity_train.py`, so that students see every line
+of the computation.
 
 ---
 
-## Notes
+## Units and conventions
 
-- The stationary Kerr study lives in its own repository, `KerrBrachistochrone`; the
-  subset used by this paper is mirrored in `KerrScripts/`.
-- Earlier gravity-train / interior-Schwarzschild scripts from the initial release
-  belong to a separate study and are not part of the non-stationary paper.
+As in the paper: R = c = 1, x = r/R, compactness μ = r_s/R with 0 < μ < 8/9, turning radius
+q = r_*/R, station separation Δ. The optical index is used through w = 1/n², which stays finite at
+the surface, where n diverges because the particle starts at rest. Times are in units of R/c.
+
+---
+
+## Versions
+
+* The scripts released with the original submission (June 2026) are preserved under the tag
+  `v1.0-as-submitted`.
+* Between July and November 2026 this repository temporarily hosted the code of a different project,
+  now maintained at [ImanetorX98/NonStationaryBrachistochrone](https://github.com/ImanetorX98/NonStationaryBrachistochrone).
+  That material is still available in the history of this repository.
+
+## License
+
+MIT, see `LICENSE`.
