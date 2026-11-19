@@ -4,3 +4,18 @@ __pycache__/
 figures/output/
 .venv*/
 .DS_Store
+
+# Private review material: never publish
+*referee*
+*Referee*
+*REFEREE*
+*response_to_referees*
+*highlighted*
+*evidenziat*
+*risposta*
+*bozza*
+*.tex
+*.bib
+*.pdf
+revisione_EJP/
+invio_risposta/
