@@ -1,0 +1,35 @@
+{
+  "title": "CoordinateTimeGravityTrain: companion code and student notebook for the gravitational train in the interior Schwarzschild metric",
+  "description": "<p>Companion code for the paper <em>The Gravitational Train in the Interior Schwarzschild Metric: NLO and NNLO Perturbative Expansions</em> (I. Rosignoli, submitted to the European Journal of Physics). A particle released from rest at the surface of a homogeneous star slides without friction through a tunnel to another surface point; in general relativity the tunnel that minimises the coordinate travel time is a geodesic of an optical metric and follows a radial Snell law.</p><ul><li><code>gravity_train.py</code>: documented core physics (metric functions, optical index, Snell integrals, travel times, perturbative formulas, high-compactness analysis).</li><li><code>checks/</code> and <code>run_all_checks.py</code>: symbolic (SymPy and Wolfram Language) and numerical checks of the results of the paper, from the interior Schwarzschild metric (Appendix A) to the thresholds of Sec. VII, one PASS/FAIL line per check.</li><li><code>figures/</code>: scripts for Figs. 1 and 2.</li><li><code>notebooks/gravity_train_exercise.ipynb</code>: computational exercise for students, runnable in a web browser (Google Colab) without installation.</li></ul><p>Python 3 with NumPy, SciPy, SymPy, mpmath and Matplotlib; <code>python3 run_all_checks.py</code> runs all checks in about 20 s. The scripts released with the original submission (June 2026) are preserved under the git tag <code>v1.0-as-submitted</code>.</p>",
+  "creators": [
+    {
+      "name": "Rosignoli, Iman",
+      "orcid": "0009-0004-4536-0285",
+      "affiliation": "University of Pavia"
+    }
+  ],
+  "version": "2.0.0",
+  "access_right": "open",
+  "license": "mit",
+  "upload_type": "software",
+  "keywords": [
+    "gravity train",
+    "brachistochrone",
+    "interior Schwarzschild metric",
+    "optical metric",
+    "Snell law",
+    "Fermat principle",
+    "conjugate points",
+    "Buchdahl bound",
+    "general relativity education",
+    "Jupyter notebook",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.20617415",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-preprint"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below, together with the companion paper."
+title: "CoordinateTimeGravityTrain: companion code and student notebook for the gravitational train in the interior Schwarzschild metric"
+type: software
+authors:
+  - family-names: Rosignoli
+    given-names: Iman
+    orcid: "https://orcid.org/0009-0004-4536-0285"
+    affiliation: "University of Pavia"
+version: "2.0.0"
+date-released: "2026-11-19"
+license: MIT
+repository-code: "https://github.com/ImanetorX98/CoordinateTimeGravityTrain"
+keywords:
+  - gravity train
+  - brachistochrone
+  - interior Schwarzschild metric
+  - optical metric
+  - Snell law
+  - general relativity education
+references:
+  - type: article
+    status: preprint
+    authors:
+      - family-names: Rosignoli
+        given-names: Iman
+        orcid: "https://orcid.org/0009-0004-4536-0285"
+    title: "The Gravitational Train in the Interior Schwarzschild Metric: NLO and NNLO Perturbative Expansions"
+    doi: 10.5281/zenodo.20617415
