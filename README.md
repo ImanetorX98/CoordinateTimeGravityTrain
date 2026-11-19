@@ -3,12 +3,12 @@
 Companion code for
 
 > I. Rosignoli, *The Gravitational Train in the Interior Schwarzschild Metric: NLO and NNLO
-> Perturbative Expansions*, European Journal of Physics (2026).
+> Perturbative Expansions*, submitted to European Journal of Physics (2026).
 
 A particle is released from rest at one point of the surface of a homogeneous star and slides
 without friction through a tunnel to another surface point. Which tunnel minimises the travel time?
-In general relativity the answer is a geodesic of an optical (Jacobi) metric, and the fastest tunnel
-follows a radial Snell law. This repository reproduces **every result of the paper** from scratch
+In general relativity the answer is a geodesic of an optical metric, and the fastest tunnel
+follows a radial Snell law. This repository reproduces from scratch **the results of the paper listed below**
 and contains the **computational exercise for students** described in Sec. VI F.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ImanetorX98/CoordinateTimeGravityTrain/blob/main/notebooks/gravity_train_exercise.ipynb)
@@ -27,7 +27,7 @@ Expected final output:
 ```
 check                                                result  passed  failed  time
 Appendix A: interior Schwarzschild metric            PASS         7       0    0s
-Secs. VI-VII: analytic results (SymPy)               PASS        41       0    7s
+Secs. VI-VII: analytic results (SymPy)               PASS        40       0    7s
 Table I, Secs. IV, VI F, VII B: numerical results    PASS        21       0    3s
 ALL CHECKS PASSED
 ```
@@ -35,18 +35,18 @@ ALL CHECKS PASSED
 If Mathematica or the free Wolfram Engine is installed, `python3 run_all_checks.py --with-mathematica`
 also runs an independent implementation of the symbolic checks in Wolfram Language.
 
-To regenerate the two figures of the paper:
+To regenerate the curves of Figs. 1 and 2:
 
 ```bash
 python3 figures/fig1_exact_vs_nnlo.py          # a few seconds
-python3 figures/fig2_high_compactness.py       # about 15 s
+python3 figures/fig2_high_compactness.py       # tens of seconds
 ```
 
 They are written to `figures/output/` (PDF and PNG).
 
 ---
 
-## Where each result of the paper is checked
+## Where the results are checked
 
 | Result in the paper | Script | What is checked |
 |---|---|---|
@@ -55,7 +55,7 @@ They are written to `figures/output/` (PDF and PNG).
 | Snell integrand I0, I1, I2, Eqs. (47)-(49) | `checks/check_derivations.py` | exact series |
 | Closed-form integrals and Eq. (54), Sec. VI D | `checks/check_derivations.py` | derivatives of the primitives, end-point values |
 | q1, q2 and Eq. (59), Sec. VI E | `checks/check_derivations.py` | perturbative inversion; proof that q1, q2 > 0 |
-| Table I and the accuracy of NLO/NNLO, Sec. VI F | `checks/check_numerics.py` | exact Snell law versus the series, for 10° ≤ Δ ≤ 170° |
+| Table I (exact values) and the accuracy of NNLO, Sec. VI F | `checks/check_numerics.py` | exact Snell law versus the series, at 10° steps from 10° to 170° |
 | Earth example, Sec. VI G | `checks/check_derivations.py` | depth shift and travel time |
 | Proper-time versus coordinate-time optimum, Sec. IV | `checks/check_numerics.py` | q = 0.527 versus 0.559 (Δ = 90°, μ = 0.3) |
 | Buchdahl asymptotics, Sec. VII A | `checks/check_derivations.py` | A(0) and n(0) as μ → 8/9 |
@@ -81,10 +81,11 @@ they appear in the paper, in `expected_values.json`.
 | `notebooks/gravity_train_exercise.ipynb` | The computational exercise for students (supplementary material of the paper). |
 | `expected_values.json` | Values quoted in the paper, with tolerances. |
 
-Every script starts with a short header stating its **purpose**, the **part of the paper** it
-reproduces, its **inputs** (command-line options, all with defaults), its **outputs** and its
-**runtime**. Check scripts print one `PASS | ...` or `FAIL | ...` line per check and exit with
-status 0 only if everything passes, so they can be used in automated tests.
+Every Python script in `checks/` and `figures/`, and `run_all_checks.py`, starts with a short header
+stating its **purpose**, the **part of the paper** it reproduces, its **inputs** (command-line options,
+all with defaults), its **outputs** and its **runtime**. The Python check scripts print one
+`PASS | ...` or `FAIL | ...` line per check and exit with status 0 only if everything passes, so they
+can be used in automated tests; the Wolfram Language check prints a label and `True`/`False` per check.
 
 ---
 
@@ -92,7 +93,7 @@ status 0 only if everything passes, so they can be used in automated tests.
 
 `notebooks/gravity_train_exercise.ipynb` guides a student, in six parts, from the optical index to
 the exact relativistic tunnels: Newtonian limit, the two numerical difficulties of the problem and how
-to remove them, reproduction of Table I, comparison of Newtonian, NLO, NNLO and exact tunnels, and two
+to handle them, the exact values of Table I, comparison of Newtonian, NLO, NNLO and exact turning radii, and two
 open explorations (proper time; antipodal tunnels at high compactness). Each part ends with a check
 value and a conceptual question.
 
@@ -107,7 +108,7 @@ of the computation.
 
 ## Units and conventions
 
-As in the paper: R = c = 1, x = r/R, compactness μ = r_s/R with 0 < μ < 8/9, turning radius
+The code uses R = c = 1 (the paper keeps c explicit), x = r/R, compactness μ = r_s/R with 0 < μ < 8/9, turning radius
 q = r_*/R, station separation Δ. The optical index is used through w = 1/n², which stays finite at
 the surface, where n diverges because the particle starts at rest. Times are in units of R/c.
 

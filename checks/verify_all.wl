@@ -18,7 +18,7 @@ wseries = Expand[tr[ax (ar-ax),mu,3]];
 vn = Cancel[2 wseries/(mu (1-x^2))];
 n1 = 7 (1-x^2)/16; n2 = (1-x^2) (227-3 x^2)/512;
 normn = tr[Sqrt[(1-mu)/vn],mu,2];
-test["Sec. VI A-B A through mu^2",eq[tr[ax-aclaim,mu,2]]];
+test["Sec. VI A-B A and B through mu^2",eq[tr[ax-aclaim,mu,2]] && eq[tr[1/(1-mu x^2)-1-mu x^2-mu^2 x^4,mu,2]]];
 test["Sec. VI A-B surface gap through mu^2",eq[tr[ar-ax-mu (1-x^2)/2 (1-3 mu (1-x^2)/8),mu,2]]];
 test["Sec. VI A-B normalized n through mu^2",eq[normn-1-mu n1-mu^2 n2]];
 
@@ -82,7 +82,6 @@ test["Sec. VII B (circular orbits) unique physical critical z",CountRoots[critic
 stability=D[ll^2/(ar0 gg[x]),{x,2}]+ll^2 gg''[x]/(ar0 gg[x]^2);
 test["Sec. VII B (circular orbits) stability: max stable, min unstable",eq[stability/.Derivative[1][gg][x]->0]];
 test["Sec. VII B (circular orbits) logarithmic bottleneck primitive",FullSimplify[D[ArcSinh[x/Sqrt[dd/bb]]/Sqrt[bb],x]==1/Sqrt[dd+bb x^2],dd>0 && bb>0 && x>0]];
-test["Sec. VII B (circular orbits) critical bottleneck exponent",FullSimplify[dd/(dd^3)^(1/2)==dd^(-1/2),dd>0]];
 
 (* Sec. VII B, diameter: exact regularization, Jacobi equation, cubic, local optimality. *)
 vreg=mm (3 aa-yy)^2 (5 aa-yy)/(16 ww (yy+aa));

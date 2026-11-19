@@ -5,12 +5,12 @@ Purpose  (a) fastest antipodal tunnels for several mu: the diameter below mu_s,
          one of two mirror-image curved tunnels above; (b) turning radius q of
          the fastest tunnel versus mu for Delta = 90 and 180 deg, with the NNLO
          formula and the thresholds mu_s, mu_c and the Buchdahl bound.
-         For every mu all Snell solutions joining the stations (winding ones and
-         the diameter included) are compared and the fastest is kept.
+         For each mu the fastest tunnel found by the grid scan of
+         gravity_train.fastest_tunnel (diameter and winding tunnels included) is plotted.
 Paper    Fig. 2, Sec. VII B.
 Inputs   optional: --quick (coarser mu grid for panel b).
 Outputs  figures/output/fig2_high_compactness.pdf and .png
-Runtime  about 15 s (a few seconds with --quick).
+Runtime  tens of seconds (a few seconds with --quick).
 """
 import argparse
 import math

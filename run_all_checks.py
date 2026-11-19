@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run every check of the paper in one go and print a summary table.
 
-Purpose  Reproduce, from scratch, every analytic and numerical result of the paper.
+Purpose  Run, from scratch, all the checks in checks/ (see the README for what each covers).
 Inputs   optional: --with-mathematica  also run checks/verify_all.wl through
          wolframscript (requires a Wolfram Engine or Mathematica installation).
 Outputs  the output of each check, then a table with one line per check script

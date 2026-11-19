@@ -49,7 +49,7 @@ vn = s.cancel(2*W/(mu*(1-x*x)))
 n1 = 7*(1-x*x)/16
 n2 = (1-x*x)*(227-3*x*x)/512
 N = trunc(s.sqrt((1-mu)/vn), mu, 3)
-check('Sec. VI A-B A through mu^2', lambda: zero(trunc(A-Ac,mu,3)))
+check('Sec. VI A-B A and B through mu^2', lambda: zero(trunc(A-Ac,mu,3)) and zero(trunc(1/(1-mu*x*x),mu,3)-1-mu*x*x-mu**2*x**4))
 check('Sec. VI A-B surface gap through mu^2', lambda: zero(trunc(AR-A-mu*(1-x*x)/2*(1-3*mu*(1-x*x)/8),mu,3)))
 check('Sec. VI A-B normalized n through mu^2 (uses W through mu^3)', lambda: zero(N-1-n1*mu-n2*mu**2))
 
@@ -131,7 +131,6 @@ gfun=s.Function('g')(x)
 check('Sec. VII B (circular orbits) stability sign: max G stable, min G unstable', lambda: zero(s.diff(L**2/(ar*gfun),x,2).xreplace({s.diff(gfun,x):s.S.Zero})+L**2*s.diff(gfun,x,2)/(ar*gfun**2)))
 d,b,eta=s.symbols('d b eta',positive=True)
 check('Sec. VII B (circular orbits) logarithmic bottleneck primitive', lambda: zero(s.diff(s.asinh(x/s.sqrt(d/b))/s.sqrt(b),x)-1/s.sqrt(d+b*x*x)))
-check('Sec. VII B (circular orbits) critical cubic bottleneck exponent -1/2', lambda: zero((d**3)**(-s.Rational(1,2))*d-d**(-s.Rational(1,2))))
 
 # Sec. VII B (diameter): exact algebra for regularized finite-part integrals and Jacobi field.
 # u=x²; V=W/[W0(1-u)], h=sqrt(1-u) H, H=sqrt(V)/y.

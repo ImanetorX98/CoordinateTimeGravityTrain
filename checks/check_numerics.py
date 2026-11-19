@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Numerical results of the paper, recomputed from the exact Snell law.
 
-Purpose  Recompute every number quoted in the paper that comes from numerical
-         integration and compare it with expected_values.json.
+Purpose  Recompute the numerical results listed below from the exact Snell law
+         and compare them with expected_values.json.
 Paper    Table I and Sec. VI F (accuracy of NLO/NNLO), Sec. IV (proper-time
          example), Sec. VII B (mu_c, mu_s, antipodal tunnels, mu = 0.888).
 Inputs   none (reads ../expected_values.json).

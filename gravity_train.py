@@ -3,9 +3,9 @@
 Shared by the checks in ``checks/`` and the figure scripts in ``figures/``.
 
 Paper: I. Rosignoli, "The Gravitational Train in the Interior Schwarzschild Metric:
-NLO and NNLO Perturbative Expansions", European Journal of Physics (2026).
+NLO and NNLO Perturbative Expansions", submitted to European Journal of Physics (2026).
 
-Units and notation (as in the paper): R = c = 1, x = r/R, compactness mu = r_s/R
+Units and notation: R = c = 1 (the paper keeps c explicit), x = r/R, compactness mu = r_s/R
 with 0 < mu < 8/9, turning radius q = r_*/R, station separation Delta (radians).
 A particle is released from rest at the surface and slides without friction
 through a planar tunnel; the tunnel minimising the coordinate travel time is a
@@ -14,7 +14,7 @@ geodesic of the optical metric n^2 (B dr^2 + r^2 dphi^2), Eqs. (26)-(27).
 Numerically it is convenient to use w(x) = 1/n(x)^2, which is finite everywhere
 (n diverges at the surface, where the particle starts at rest):
     w(x) = A(x) [1 - A(x)/A(1)]                     (Eq. 26)
-All integrals use the substitution x = q + (1-q) sin^2 u, which removes the
+Non-radial Snell integrals use the substitution x = q + (1-q) sin^2 u, which removes the
 integrable singularities at the turning point (x = q) and at the surface (x = 1).
 """
 import contextlib
@@ -65,7 +65,7 @@ def gap(x, mu):
 def w(x, mu, clock="coordinate"):
     """1/n^2, the inverse squared optical index.
 
-    clock="coordinate": time on the stations' clocks, Eq. (26); mu = 0 gives the Newtonian 1 - x^2.
+    clock="coordinate": Schwarzschild coordinate time, Eq. (26) (the stations' clocks read a constant multiple of it); mu = 0 gives the Newtonian 1 - x^2.
     clock="proper":     the passenger's proper time, from d tau in Eq. (22): A(1)/A(x) - 1.
     """
     if mu == 0.0:
@@ -91,7 +91,7 @@ def _parts(u, q, mu, clock="coordinate"):
 
 
 def half_angle(q, mu, clock="coordinate"):
-    """Half opening Delta/2 of the Snell tunnel with turning radius q (Eq. 34)."""
+    """Half opening Delta/2 of the Snell tunnel with admissible turning radius q (Eq. 34)."""
     def f(u):
         x, wx, wq, rad, jac = _parts(u, q, mu, clock)
         if rad == 0.0:
@@ -106,7 +106,7 @@ def opening(q, mu):
 
 
 def travel_time(q, mu):
-    """Coordinate travel time t = int n dl of the Snell tunnel with turning radius q, in units R/c."""
+    """Coordinate travel time t = int n dl of the Snell tunnel with admissible turning radius q, in units R/c."""
     def f(u):
         x, wx, wq, rad, jac = _parts(u, q, mu)
         if rad == 0.0 or wx == 0.0:
@@ -133,7 +133,7 @@ def q_series(delta, mu):
 
 
 def find_q(delta, mu, clock="coordinate"):
-    """Exact turning radius for 0 < delta < pi when Delta(q) is monotonic (mu <~ 0.75).
+    """Turning radius for a monotonic opening curve (mu <~ 0.75), searched in 0.0001 <= q <= 0.999.
 
     For larger mu the Snell law can have several solutions; use fastest_tunnel().
     """
@@ -155,9 +155,9 @@ def admissible(qs, mu, n=20001):
 
 
 def fastest_tunnel(delta, mu, qs=None):
-    """All Snell tunnels joining two stations delta apart, sorted by travel time.
+    """Snell tunnels joining two stations delta apart found by a finite grid scan, sorted by travel time.
 
-    A tunnel may wind: its total opening can be delta + 2 pi k or 2 pi - delta + 2 pi k.
+    A tunnel may wind: its total opening can be delta + 2 pi k or 2 pi - delta + 2 pi k; the scan tries k = 0, 1, 2, 3.
     For delta = pi the radial diameter is included as well. Returns a list of dicts
     with keys q, total_opening_deg, time (and note for the diameter).
     """
@@ -210,7 +210,7 @@ def mu_s():
 
 
 def tunnel_curve(q, mu, n=400):
-    """Exact tunnel shape: returns (X, Y) of the whole tunnel, stations symmetric about the Y axis."""
+    """Exact tunnel shape for admissible q: returns (X, Y) of the whole tunnel, stations symmetric about the Y axis."""
     us = np.linspace(0.0, math.pi / 2, n)
 
     def f(u):
