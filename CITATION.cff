@@ -10,6 +10,7 @@ authors:
 version: "2.0.0"
 date-released: "2026-11-19"
 license: MIT
+doi: 10.5281/zenodo.24378845
 repository-code: "https://github.com/ImanetorX98/CoordinateTimeGravityTrain"
 keywords:
   - gravity train

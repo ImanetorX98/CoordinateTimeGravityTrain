@@ -11,6 +11,7 @@ In general relativity the answer is a geodesic of an optical metric, and the fas
 follows a radial Snell law. This repository reproduces from scratch **the results of the paper listed below**
 and contains the **computational exercise for students** described in Sec. VI F.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24378845.svg)](https://doi.org/10.5281/zenodo.24378845)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ImanetorX98/CoordinateTimeGravityTrain/blob/main/notebooks/gravity_train_exercise.ipynb)
 
 ---
@@ -121,6 +122,16 @@ the surface, where n diverges because the particle starts at rest. Times are in 
 * Between July and November 2026 this repository temporarily hosted the code of a different project,
   now maintained at [ImanetorX98/NonStationaryBrachistochrone](https://github.com/ImanetorX98/NonStationaryBrachistochrone).
   That material is still available in the history of this repository.
+
+## How to cite
+
+Please cite the paper and, for the code, the Zenodo archive:
+
+* Software, all versions: [doi:10.5281/zenodo.24378845](https://doi.org/10.5281/zenodo.24378845);
+  version 2.0.0, the one used in the revised manuscript: [doi:10.5281/zenodo.24378846](https://doi.org/10.5281/zenodo.24378846).
+* Paper (preprint): [doi:10.5281/zenodo.20617415](https://doi.org/10.5281/zenodo.20617415).
+
+`CITATION.cff` contains the same information in machine-readable form.
 
 ## License
 
