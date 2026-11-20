@@ -39,7 +39,7 @@ also runs an independent implementation of the symbolic checks in Wolfram Langua
 To regenerate the curves of Figs. 1 and 2:
 
 ```bash
-python3 figures/fig1_exact_vs_nnlo.py          # a few seconds
+python3 figures/fig1_exact_tunnels.py           # about a minute
 python3 figures/fig2_high_compactness.py       # tens of seconds
 ```
 
@@ -63,7 +63,7 @@ They are written to `figures/output/` (PDF and PNG).
 | Circular optical orbits, μ_c, Eq. (70) | `checks/check_derivations.py`, `checks/check_numerics.py` | exact cubic and its root |
 | Loss of minimality of the diameter, μ_s, Eqs. (71)-(73) | `checks/check_derivations.py`, `checks/check_numerics.py` | Jacobi equation, K(μ_s) = 0, faster curved tunnels at μ = 0.8 |
 | Fastest tunnels near the Buchdahl bound, Sec. VII B | `checks/check_numerics.py` | turning radii at μ = 0.888 |
-| Fig. 1 | `figures/fig1_exact_vs_nnlo.py` | |
+| Fig. 1 | `figures/fig1_exact_tunnels.py` | exact tunnels, 70° apart, for 15 values of µ |
 | Fig. 2 | `figures/fig2_high_compactness.py` | |
 
 The reference values and tolerances used by `check_numerics.py` are listed, with the place where
