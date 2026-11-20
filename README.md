@@ -29,7 +29,7 @@ Expected final output:
 check                                                result  passed  failed  time
 Appendix A: interior Schwarzschild metric            PASS         7       0    0s
 Secs. VI-VII: analytic results (SymPy)               PASS        40       0    7s
-Table I, Secs. IV, VI F, VII B: numerical results    PASS        21       0    3s
+Table I, Secs. IV, VI F, VII B: numerical results    PASS        26       0    5s
 ALL CHECKS PASSED
 ```
 
@@ -61,7 +61,7 @@ They are written to `figures/output/` (PDF and PNG).
 | Proper-time versus coordinate-time optimum, Sec. IV | `checks/check_numerics.py` | q = 0.527 versus 0.559 (Δ = 90°, μ = 0.3) |
 | Buchdahl asymptotics, Sec. VII A | `checks/check_derivations.py` | A(0) and n(0) as μ → 8/9 |
 | Circular optical orbits, μ_c, Eq. (70) | `checks/check_derivations.py`, `checks/check_numerics.py` | exact cubic and its root |
-| Loss of minimality of the diameter, μ_s, Eqs. (71)-(73) | `checks/check_derivations.py`, `checks/check_numerics.py` | Jacobi equation, K(μ_s) = 0, faster curved tunnels at μ = 0.8 |
+| Loss of minimality of the diameter, μ_s, Eqs. (71)-(73) | `checks/check_derivations.py`, `checks/check_numerics.py` | Jacobi equation, K(μ_s) = 0; independent check by direct quadrature: the sign change of (Δ − π)/q reproduces μ_s, no curved antipodal tunnel at μ = 0.76, a faster one at μ = 0.775 and 0.8 |
 | Fastest tunnels near the Buchdahl bound, Sec. VII B | `checks/check_numerics.py` | turning radii at μ = 0.888 |
 | Fig. 1 | `figures/fig1_exact_tunnels.py` | exact tunnels, 70° apart, for 15 values of µ |
 | Fig. 2 | `figures/fig2_high_compactness.py` | |
@@ -128,8 +128,8 @@ the surface, where n diverges because the particle starts at rest. Times are in 
 Please cite the paper and, for the code, the Zenodo archive:
 
 * Software, all versions: [doi:10.5281/zenodo.24378845](https://doi.org/10.5281/zenodo.24378845);
-  version 2.0.1, the one used in the revised manuscript: [doi:10.5281/zenodo.24383706](https://doi.org/10.5281/zenodo.24383706)
-  (version 2.0.0:
+  version 2.0.2 is the one used in the revised manuscript (version 2.0.1:
+  [doi:10.5281/zenodo.24383706](https://doi.org/10.5281/zenodo.24383706); version 2.0.0:
   [doi:10.5281/zenodo.24378846](https://doi.org/10.5281/zenodo.24378846)).
 * Paper (preprint): [doi:10.5281/zenodo.20617415](https://doi.org/10.5281/zenodo.20617415).
 

@@ -65,6 +65,38 @@ check("Sec. VII B, mu = 0.8: q of curved tunnel", abs(best["q"] - e["q_curved"])
 check("Sec. VII B, mu = 0.8: time of curved tunnel", abs(best["time"] - e["t_curved"]) < e["tolerance"], f"{best['time']:.4f} R/c")
 check("Sec. VII B, mu = 0.8: time of diameter", abs(diam["time"] - e["t_diameter"]) < e["tolerance"], f"{diam['time']:.4f} R/c")
 
+# Threshold mu_s from direct quadrature, independent of the formula for K (Sec. VII B)
+from scipy.optimize import brentq  # noqa: E402
+
+
+def slope(mu, q=0.002):
+    """(Delta(q) - pi)/q for a tunnel passing close to the centre; tends to 2K(mu) as q -> 0."""
+    return (g.opening(q, mu) - math.pi) / q
+
+
+for m in (0.74, 0.78):
+    s, k2 = slope(m), 2 * g.K(m)
+    check(f"Sec. VII B, mu = {m}: direct (Delta - pi)/q at q = 0.002 equals 2K", abs(s - k2) < 1e-4,
+          f"{s:+.5f} vs {k2:+.5f}")
+mu_num = brentq(lambda m: slope(m, 0.001), 0.765, 0.772, xtol=1e-9)
+check("Sec. VII B: sign change of the direct slope reproduces mu_s", abs(mu_num - g.mu_s()) < 1e-5,
+      f"{mu_num:.6f} vs {g.mu_s():.6f}")
+
+
+def antipodal_curved(mu):
+    """Curved antipodal tunnels: roots of Delta(q) = pi on a grid of turning radii."""
+    qs = [i / 100 for i in range(1, 96)]
+    v = [g.opening(q, mu) - math.pi for q in qs]
+    return [brentq(lambda q: g.opening(q, mu) - math.pi, qs[i], qs[i + 1])
+            for i in range(len(qs) - 1) if v[i] * v[i + 1] < 0]
+
+
+check("Sec. VII B, mu = 0.76 < mu_s: no curved antipodal tunnel", not antipodal_curved(0.76))
+roots = antipodal_curved(0.775)
+ok = len(roots) == 1 and g.travel_time(roots[0], 0.775) < g.diameter_time(0.775)
+check("Sec. VII B, mu = 0.775 > mu_s: one curved antipodal tunnel, faster than the diameter", ok,
+      f"q = {roots[0]:.4f}, t = {g.travel_time(roots[0], 0.775):.4f} vs {g.diameter_time(0.775):.4f} R/c" if roots else "none")
+
 # Near the Buchdahl bound
 e = EXP["near_buchdahl_mu_0p888"]
 for d, key in ((90, "q_delta90"), (180, "q_delta180")):
