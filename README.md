@@ -128,7 +128,8 @@ the surface, where n diverges because the particle starts at rest. Times are in 
 Please cite the paper and, for the code, the Zenodo archive:
 
 * Software, all versions: [doi:10.5281/zenodo.24378845](https://doi.org/10.5281/zenodo.24378845);
-  version 2.0.0, the one used in the revised manuscript: [doi:10.5281/zenodo.24378846](https://doi.org/10.5281/zenodo.24378846).
+  version 2.0.1 is the one used in the revised manuscript (version 2.0.0:
+  [doi:10.5281/zenodo.24378846](https://doi.org/10.5281/zenodo.24378846)).
 * Paper (preprint): [doi:10.5281/zenodo.20617415](https://doi.org/10.5281/zenodo.20617415).
 
 `CITATION.cff` contains the same information in machine-readable form.

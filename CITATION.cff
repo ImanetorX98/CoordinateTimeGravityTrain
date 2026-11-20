@@ -7,8 +7,8 @@ authors:
     given-names: Iman
     orcid: "https://orcid.org/0009-0004-4536-0285"
     affiliation: "University of Pavia"
-version: "2.0.0"
-date-released: "2026-11-19"
+version: "2.0.1"
+date-released: "2026-11-20"
 license: MIT
 doi: 10.5281/zenodo.24378845
 repository-code: "https://github.com/ImanetorX98/CoordinateTimeGravityTrain"
