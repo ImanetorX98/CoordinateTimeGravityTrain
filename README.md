@@ -64,7 +64,7 @@ They are written to `figures/output/` (PDF and PNG).
 | Loss of minimality of the diameter, μ_s, Eqs. (71)-(73) | `checks/check_derivations.py`, `checks/check_numerics.py` | Jacobi equation, K(μ_s) = 0; independent check by direct quadrature: the sign change of (Δ − π)/q reproduces μ_s, no curved antipodal tunnel at μ = 0.76, a faster one at μ = 0.775 and 0.8 |
 | Fastest tunnels near the Buchdahl bound, Sec. VII B | `checks/check_numerics.py` | turning radii at μ = 0.888 |
 | Fig. 1 | `figures/fig1_exact_tunnels.py` | exact tunnels, 70° apart, for 15 values of µ |
-| Fig. 2 | `figures/fig2_high_compactness.py` | |
+| Fig. 2 | `figures/fig2_high_compactness.py` | fastest antipodal tunnels, and turning radius versus compactness for 90° and 180° |
 
 The reference values and tolerances used by `check_numerics.py` are listed, with the place where
 they appear in the paper, in `expected_values.json`.
@@ -134,7 +134,7 @@ Please cite the paper and, for the code, the Zenodo archive:
   [doi:10.5281/zenodo.24378846](https://doi.org/10.5281/zenodo.24378846)).
 * Paper (preprint): [doi:10.5281/zenodo.20617415](https://doi.org/10.5281/zenodo.20617415).
 
-`CITATION.cff` contains the same information in machine-readable form.
+`CITATION.cff` records the all-versions software DOI and the preprint DOI.
 
 ## License
 
